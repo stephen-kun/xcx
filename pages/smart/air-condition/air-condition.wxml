@@ -1,0 +1,32 @@
+<!--air-condition.wxml-->
+
+
+<form bindsubmit="addCmd">
+<button>所有设备</button>
+<view class="section section_gap">
+<checkbox-group class="group" catchchange="checkboxChange">
+  <view class="label-1" wx:for="{{checkboxItems}}">
+    <label>
+      <checkbox hidden value="{{item.name}}" checked="{{item.checked}}"></checkbox>
+      <view class="label-1__icon">
+        <view class="label-1__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
+      </view>
+      <text class="label-1__text">{{item.name}}</text>
+    </label>
+  </view>
+</checkbox-group>
+</view>
+<button>控制命令</button>
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;"  value="{{value}}" catchchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{cmds}}" style="line-height: 50px">{{item.value}}</view>
+    </picker-view-column>
+  </picker-view>
+  <button form-type="submit">添加</button>
+</form>
+
+<view wx:for="{{settings}}">{{item.dev}}:{{item.cmd}}
+<switch checked bindchange="switchChange"/>
+</view>
+
+

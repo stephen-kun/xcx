@@ -1,0 +1,6 @@
+{
+	"appid":"wx5ccf112969dd7ec6",
+	"appsecret":"875a05992e44c851bbf46ed7c8d78e76"
+}
+
+https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code
