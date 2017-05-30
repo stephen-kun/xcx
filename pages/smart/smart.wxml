@@ -1,9 +1,16 @@
 <!--smart.wxml-->
 
-<view>
-<button bindtap="goAirPage">空调</button>
-<button bindtap="goLightPage">电灯</button>
-<button bindtap="goCurtainPage">窗帘</button>
+<view class="clock">
+  <view class="edit">
+    <text class="myClock">我的设备</text>
+    <view class="add" bindtap="doAddClock">
+    <image class="addImage" src="../imags/add.jpg" mode="aspectFit"></image>
+    </view>
+
+    <view class="clock" wx:for="{{[1, 2, 3, 4]}}">
+    <view class="clockList" bindtap="doEdit"></view>
+    </view>
+  </view>
 </view>
 
 

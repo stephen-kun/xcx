@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/smart/smart",
-    "pages/story/story",
-    "pages/bbc/bbc",
     "pages/weather/weather",
     "pages/clock/clock",
-    "pages/smart/air-condition/air-condition",
-    "pages/smart/light/light",
-    "pages/smart/curtain/curtain"
+    "pages/me/me",
+    "pages/story/story",
+    "pages/bbc/bbc",
+    "pages/me/login/login",
+    "pages/clock/create/create",
+    "pages/clock/edit/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,10 +26,6 @@
         "text": "智控"
       },
       {
-        "pagePath": "pages/story/story",
-        "text": "故事"
-      },
-      {
         "pagePath": "pages/weather/weather",
         "text": "天气"
       },
@@ -37,8 +34,8 @@
         "text": "闹钟"
       },
       {
-        "pagePath": "pages/bbc/bbc",
-        "text": "电台"
+        "pagePath": "pages/me/me",
+        "text": "我"
       }
     ]
   },

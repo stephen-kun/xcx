@@ -1,0 +1,36 @@
+<!--login.wxml-->
+
+<view class="userInfo">
+  <view class="avatar">
+    <text class="head">头像</text>
+    <image  class="picture" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  </view>
+
+  <view class="nickname">
+    <text class="words">昵称</text>
+    <text class="values">{{userInfo.nickName}}</text>
+  </view>
+
+
+  <form bindsubmit="doSave">
+  <view class="deviceid">
+  <text class="words">设备ID</text>
+  <input name="deviceid" class="input" placeholder="输入设备ID" value="{{userInfo.deviceid}}"/>
+  </view>
+
+  <view class="city">
+  <text class="words">地区</text>
+  <input name="city" class="input" placeholder="输入城市名" value="{{userInfo.city}}"/>
+  </view>
+
+  <view class="phone">
+  <text class="words">手机</text>
+  <input name="phone" class="input" placeholder="输入您的手机号" value="{{userInfo.phone}}"/>
+  </view>  
+
+  <button class="save" form-type="submit">确认</button> 
+  </form>
+
+
+
+</view>

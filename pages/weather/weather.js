@@ -2,10 +2,6 @@
 // weather.js
 var app = getApp()
 
-var cities = [
-  { id: "广东", city: ["深圳", "广州"] }, { id: "湖南", city: ["长沙", "邵阳"] }, { id: "北京", city: ["北京"] }, { id: "上海", city: ["上海"] }
-]
-
 Page({
 
   /**
@@ -14,11 +10,10 @@ Page({
   data: {
     appid:null,
     city: "深圳",
-    cities: cities,
+    cities: null,
     value:null,
     values:[0, 0],
-    deviceid:null,
-    subcities:cities[0].city
+    subcities:null
   },
 
   bindChange: function (e) {
@@ -26,7 +21,7 @@ Page({
     console.log(val)
     this.setData({
       subcities: this.data.cities[val[0]].city,
-      value: this.data.subcities[val[1]]
+      value: this.data.cities[val[0]].city[val[1]]
     })
   },
 
@@ -36,18 +31,20 @@ Page({
     console.log("setCity appid: " + that.data.appid)
 
     wx.request({
-      url: 'https://bp.qubaba88.com/setCity',
+      url: 'https://wx.tonki.com.cn/city',
       data:{
         appid: that.data.appid,
-        deviceid: that.data.deviceid,
         action:"set",
         city: that.data.value
       },
       success:function(res){
-        console.log("setcity:" + res.data.city)
-        that.setData({
-          city: res.data.city
-        })
+        if(res.data.err_no == 200)
+        {
+          console.log("setcity:" + res.data.city)
+          that.setData({
+            city: res.data.city
+          })
+        }
       }
     })
   },
@@ -56,25 +53,66 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+
     app.getAppId(function (appid) {
       console.log(appid)
       that.setData({
         appid: appid
       })
     })
-    console.log("appid:" + that.data.appid)
+
+    var cities = wx.getStorageSync("cities")
+    if(cities)
+    {
+      that.setData({
+        cities:cities,
+        subcities:cities[0].city,
+        value:cities[0].city[0]
+      })
+    }
+    else
+    {
+      // 获取城市列表
+      wx.request({
+        url: 'https://wx.tonki.com.cn/city',
+        data:{
+          appid:that.data.appid,
+          action:'list'
+        },
+        success:function(res){
+          if(res.data.err_no == 200)
+          {
+            that.setData({
+              cities: res.data.cities,
+              subcities: res.data.cities[0].city
+            })   
+            wx.setStorageSync("cities", res.data.cities)     
+          }
+          else
+          {
+            wx.showToast({
+              title: '获取数据失败',
+            })
+          }
+        }
+      })
+    }
 
     // 获取城市信息
     wx.request({
-      url: 'https://bp.qubaba88.com/city',
+      url: 'https://wx.tonki.com.cn/city',
       data: {
         appid: that.data.appid,
+        action:'get'
       },
       success: function (res) {
         console.log(res.data)
-        that.setData({
-          city: res.data
-        })
+        if(res.data.err_no == 200)
+        {
+          that.setData({
+            city: res.data.city
+          })
+        }
       }
     })   
   },

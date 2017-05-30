@@ -1,0 +1,28 @@
+
+
+<template name="clock">
+<view class="clock">
+  <view class="clockChoose">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;"  value="{{value}}" catchchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{hours}}" style="line-height: 50px; text-align: center;">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{minutes}}" style="line-height: 50px; text-align: center;">{{item}}</view>
+    </picker-view-column>
+    </picker-view>
+  </view>
+  <view class="repeat">
+    <text class="repeatText">重复</text>
+    <radio-group class="radioGroup" bindchange="radioChange">
+    <label wx:for="{{items}}">
+      <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+    </label>
+    </radio-group>
+  </view>
+  <view class="affair">
+     <text class="affairText">标签</text> 
+     <input name="affair" class="affairInput" placeholder="闹钟" focus value="{{affair}}"/>
+  </view>
+</view>
+</template>

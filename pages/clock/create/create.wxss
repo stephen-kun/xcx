@@ -1,0 +1,74 @@
+/* create.wxss */
+
+.clock{
+  display: flex;
+  flex-direction: column;  
+
+}
+.clockChoose{
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+}
+
+.addButton{
+  width:100%;
+  height: 80rpx;
+  position: absolute;
+  bottom: 10%;
+}
+
+.repeat{
+  width: 100%;
+  height: 160rpx;
+  position: relative;
+  top:200rpx;
+  border-top-style: solid;
+  border-top-color: lightgray;
+  border-top-width: 2rpx;  
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+  border-bottom-width: 2rpx;
+}
+
+.repeatText{
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 30rpx;
+  top:30rpx;
+}
+
+.radioGroup{
+  width:360rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 30rpx;
+  top:30rpx;
+}
+
+.affair{
+  width: 100%;
+  height: 100rpx;
+  position: relative;
+  top:200rpx;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+  border-bottom-width: 2rpx;  
+}
+
+.affairText{
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 30rpx;
+  top:30rpx;
+}
+
+.affairInput{
+  width:200rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 30rpx;
+  top:10rpx;
+}

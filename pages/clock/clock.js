@@ -1,73 +1,129 @@
 // clock.js
-const minutes = []
-const hours = []
 
-for(let i = 0; i < 24; i++)
-{
-  hours.push(i)
-}
+var app = getApp()
 
-for(let i = 0; i<60; i++){
-  minutes.push(i)
-}
+var clocks = [
+  {
+    id:12,
+    hour:6,
+    minute:30,
+    repeate:[1, 2, 3],
+    affair:"跑步",
+    state:1
+  },
+  {
+    id: 16,
+    hour: 6,
+    minute: 30,
+    repeate: [1, 2, 3],
+    affair: "起床",
+    state: 0
+  }  
+]
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    hours: hours,
-    hour:6,
-    minutes: minutes,
-    minute:30,
-    value:[6,30],
-    clocks:[],
+    appid:null,
+    clocks:clocks,
+    isLogin:false
   },
 
-  setClock: function(e){
-    console.log("curr: " + this.data.value)
-    var clock = {};
-    clock["hour"] = this.data.hour
-    clock["minute"] = this.data.minute
-    var clocks = this.data.clocks
-    var size = this.data.clocks.length
-    if(size > 0)
-    {
-      var cnt = 0
-      for(var i=0; i<size; i++){
-        if((clocks[i].hour != clock.hour)|| (clocks[i].minute != clock.minute))
-          continue
-        else{
-          cnt++
-          break
+  doAddClock:function(e){
+    wx.navigateTo({
+      url: './create/create',
+    })
+  },
+
+  doEdit:function(e){
+    var id = e.target.id
+    var urls = './edit/edit?ID'
+    urls = urls.replace(/ID/, id)
+    wx.navigateTo({
+      url: urls,
+    })
+  },
+
+  clockSwitch:function(e){
+    var id = e.target.id
+    var value = e.detail.value
+    var state = 0
+    if(value)
+      state = 1
+    else
+      state = 0
+
+    wx.request({
+      url: 'https://wx.tonki.com.cn/clock',
+      data:{
+        appid:this.data.appid,
+        action:'update',
+        clock:{
+          id: id,
+          state:state
+        }
+      },
+      method:"POST",
+      success:function(res){
+        if(res.data.err_no == 200)
+        {
+          var clocks = this.data.clocks
+          for(var i=0; i<clocks.length; i++)
+          {
+            if(id == clocks[i].id)
+            {
+              clocks[i].state = state
+              this.setData({
+                clocks:clocks
+              })
+              break
+            }
+          }
         }
       }
-      if(cnt == 0)
-        clocks.push(clock)
-    }
-    else
-      clocks.push(clock)
-    this.setData({
-      clocks:clocks
     })
-    console.log(this.data.clocks)
-  },
 
-  bindChange: function (e) {
-    var val = e.detail.value
-    console.log(val)
-    this.setData({
-      hour: this.data.hours[val[0]],
-      minute: this.data.minutes[val[1]]
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    app.getAppId(function(appid){
+      that.setData({
+        appid:appid
+      })
+
+      var isLogin = app.isLogin()
+      that.setData({
+        isLogin:isLogin
+      })
+
+      if(isLogin)
+      {
+        // get clock list
+        wx.request({
+          url: 'https://wx.tonki.com.cn/clock',
+          data: {
+            appid: appid,
+            action: "list"
+          },
+          method:"POST",
+          success: function (res) {
+            if (res.data.err_no == 200) {
+              that.setData({
+                clocks:res.data.clocks
+              })
+            }
+          }
+        })
+      }
+
+    })
+
   },
 
   /**

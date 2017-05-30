@@ -1,0 +1,42 @@
+/* me.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  position: relative;
+  top: 50rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  position: absolute;
+  left: 30%;
+  top:100rpx;
+  font-size: 42rpx
+}
+
+.login{
+  width: 40%;
+  height: 100rpx;
+  position: absolute;
+  bottom: 100rpx;
+  left: 30%
+}
+
+.story{
+  width: 100%;
+  position: relative;
+  top:100rpx;
+}
+
+.bbc{
+  width: 100%;  
+  position: relative;
+  top:100rpx;
+}
