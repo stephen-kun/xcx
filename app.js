@@ -3,6 +3,7 @@ App({
   onLaunch: function () {
     var that = this
     //调用API从本地缓存中获取数据
+    //wx.removeStorageSync("userInfo")
     var userInfo = wx.getStorageSync('userInfo')
     if(userInfo)
     {
@@ -16,7 +17,7 @@ App({
         success: function (res) {
           if (res.code) {
             wx.request({
-              url: 'https://wx.tonki.com.cn/login',
+              url: 'https://wx.tonki.com.cn/login/',
               data: {
                 code: res.code
               },

@@ -8,7 +8,9 @@
     "pages/bbc/bbc",
     "pages/me/login/login",
     "pages/clock/create/create",
-    "pages/clock/edit/edit"
+    "pages/clock/edit/edit",
+    "pages/smart/create/create",
+    "pages/smart/edit/edit"
   ],
   "window": {
     "backgroundTextStyle": "light",

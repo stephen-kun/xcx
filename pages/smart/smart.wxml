@@ -1,14 +1,18 @@
 <!--smart.wxml-->
 
-<view class="clock">
+<view class="dev">
   <view class="edit">
-    <text class="myClock">我的设备</text>
-    <view class="add" bindtap="doAddClock">
+    <text class="myDev">我的设备</text>
+    <view class="add" bindtap="doAddDev">
     <image class="addImage" src="../imags/add.jpg" mode="aspectFit"></image>
     </view>
 
-    <view class="clock" wx:for="{{[1, 2, 3, 4]}}">
-    <view class="clockList" bindtap="doEdit"></view>
+    <view class="dev" wx:for="{{devices}}">
+      <view class="devList" bindlongtap="doEdit" id="{{item.id}}">
+        <text class="affair">{{item.dtype}}</text>
+        <text class="time">{{item.dname}}</text>
+        <text class="position">{{item.position}}</text>
+      </view>
     </view>
   </view>
 </view>

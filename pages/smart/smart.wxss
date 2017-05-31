@@ -1,11 +1,11 @@
 /* smart.wxss */
 
-.clock {
+.dev {
   display: flex;
   flex-direction: column;
 }
 
-.clockList{
+.devList{
   width: 100%;
   height:120rpx;
   position: relative;
@@ -40,7 +40,7 @@
   border-radius: 50%;
 }
 
-.myClock{
+.myDev{
   width: 300rpx;
   height: 80rpx;
   position: absolute;
@@ -54,4 +54,28 @@
   position: absolute;
   left:30rpx;
   top:20rpx;
+}
+
+.affair{
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 40rpx;
+}
+
+.time{
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 300rpx;
+  top: 40rpx;
+}
+
+.position{
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 40rpx;
 }

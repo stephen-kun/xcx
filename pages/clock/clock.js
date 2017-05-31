@@ -67,6 +67,9 @@ Page({
       },
       method:"POST",
       success:function(res){
+        console.log(res.data.err_no)
+        console.log(res.data.err_msg)
+        console.log(res.data.clocks)
         if(res.data.err_no == 200)
         {
           var clocks = this.data.clocks
@@ -113,6 +116,9 @@ Page({
           },
           method:"POST",
           success: function (res) {
+            console.log(res.data.err_no)
+            console.log(res.data.err_msg)
+            console.log(res.data.clocks)            
             if (res.data.err_no == 200) {
               that.setData({
                 clocks:res.data.clocks
@@ -137,7 +143,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+    var isLogin = app.isLogin()
+    that.setData({
+      isLogin: isLogin
+    })  
   },
 
   /**
