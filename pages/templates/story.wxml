@@ -1,0 +1,14 @@
+
+<template name='story'>
+  <view class="story" wx:for="{{items}}" wx:key="id">
+    <view class="storyList">
+      <text class='name'>{{item.name}}</text>
+      <view class="imageView" bindtap="doAction" id="{{item.id}}" wx:if="{{item.state == 0}}">
+          <image class="image" src="{{play}}" mode="aspectFit"></image>
+      </view>
+      <view class="imageView" bindtap="doAction" id="{{item.id}}" wx:else>
+          <image class="image" src="{{pause}}" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+</template>

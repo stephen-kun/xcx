@@ -69,8 +69,8 @@ Page({
       },
       success:function(res){
         if(res.data.err_no == 200){
-          wx.navigateBack({
-            delta:1
+          wx.reLaunch({
+            url: '../clock',
           })
         }
       }
@@ -102,6 +102,12 @@ Page({
     that.setData({
       isLogin:isLogin
     })
+
+    that.setData({
+      hour:6,
+      minute:30,
+      repeat: 'temporary'
+    })
   },
 
   /**
@@ -115,7 +121,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**

@@ -2,6 +2,7 @@
 
 var app = getApp()
 
+/*
 var clocks = [
   {
     id:12,
@@ -20,6 +21,7 @@ var clocks = [
     state: 0
   }  
 ]
+*/
 
 Page({
   /**
@@ -27,7 +29,7 @@ Page({
    */
   data: {
     appid:null,
-    clocks:clocks,
+    clocks:[],
     isLogin:false
   },
 
@@ -38,8 +40,9 @@ Page({
   },
 
   doEdit:function(e){
-    var id = e.target.id
-    var urls = './edit/edit?ID'
+    console.log(e.currentTarget.id)
+    var id = e.currentTarget.id
+    var urls = './edit/edit?id=ID'
     urls = urls.replace(/ID/, id)
     wx.navigateTo({
       url: urls,
@@ -47,6 +50,8 @@ Page({
   },
 
   clockSwitch:function(e){
+    console.log(e.target.id)    
+    var that = this
     var id = e.target.id
     var value = e.detail.value
     var state = 0
@@ -58,27 +63,24 @@ Page({
     wx.request({
       url: 'https://wx.tonki.com.cn/clock',
       data:{
-        appid:this.data.appid,
+        appid:that.data.appid,
         action:'update',
         clock:{
           id: id,
-          state:state
+          state:state,
         }
       },
       method:"POST",
       success:function(res){
-        console.log(res.data.err_no)
-        console.log(res.data.err_msg)
-        console.log(res.data.clocks)
         if(res.data.err_no == 200)
         {
-          var clocks = this.data.clocks
+          var clocks = that.data.clocks
           for(var i=0; i<clocks.length; i++)
           {
             if(id == clocks[i].id)
             {
               clocks[i].state = state
-              this.setData({
+              that.setData({
                 clocks:clocks
               })
               break

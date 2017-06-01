@@ -1,44 +1,88 @@
 // story.js
+
+var app = getApp()
+var playImage = '../imags/play.jpg'
+var pauseImage = '../imags/pause.jpg'
+
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    checkboxItems: [
-      { name: '老人与海', value: '美国' },
-      { name: '白雪公主', value: '中国' },
-      { name: '七个小矮人', value: '巴西' },
-      { name: '十万个为什么', value: '日本' }
-    ],
+    appid: null,
+    stories: {
+      play: playImage,
+      pause:pauseImage,
+      items:[]
+    },
   },
 
-  checkboxChange: function (e) {
-    var checked = e.detail.value
-    var changed = {}
-    for (var i = 0; i < this.data.checkboxItems.length; i++) {
-      if (checked.indexOf(this.data.checkboxItems[i].name) !== -1) {
-        changed['checkboxItems[' + i + '].checked'] = true
-      } else {
-        changed['checkboxItems[' + i + '].checked'] = false
+  doAction:function(e){
+    console.log(e.currentTarget.id)
+    var that = this
+    var id = e.currentTarget.id
+
+    wx.request({
+      url: 'https://wx.tonki.com.cn/story',
+      data:{
+        appid:that.data.appid,
+        action:'play',
+        id:id
+      },
+      success:function(res){
+        if(res.data.err_no == 200){
+          var stories = that.data.stories
+          for (var i = 0; i < stories.items.length; i++) {
+            if (stories.items[i].id == id) {
+              if (stories.items[i].state == 0)
+                stories.items[i].state = 1
+              else
+                stories.items[i].state = 0
+            }
+            else {
+              stories.items[i].state = 0
+            }
+          }
+
+          that.setData({
+            stories: stories
+          })
+        }
       }
-      this.setData(changed)
-    }
-  },
-
-  setStory:function(e){
-    for(var i=0; i<this.data.checkboxItems.length; i++)
-    {
-      if(this.data.checkboxItems[i].checked == true)
-        console.log(this.data.checkboxItems[i])
-    }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    app.getAppId(function(appid){
+      that.setData({
+        appid:appid
+      })
+    })
+
+    wx.request({
+      url: 'https://wx.tonki.com.cn/story',
+      data:{
+        appid:that.data.appid,
+        action:'list'
+      },
+      success:function(res){
+        if(res.data.err_no == 200)
+        {
+          var stories = that.data.stories
+          stories.items = res.data.stories
+          that.setData({
+            stories:stories
+          })
+        }
+      }
+    })
   },
 
   /**

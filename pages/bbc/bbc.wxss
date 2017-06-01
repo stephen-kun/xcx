@@ -1,54 +1,45 @@
 /* bbc.wxss */
-.label-1, .label-2{
-    margin-bottom: 15px;
-}
-.label-1__text, .label-2__text {
-    display: inline-block;
-    vertical-align: middle;
+.story{
+  display: flex;
+  flex-direction: column;  
 }
 
-.label-1__icon {
-    position: relative;
-    margin-right: 10px;
-    display: inline-block;
-    vertical-align: middle;
-    width: 18px;
-    height: 18px;
-    background: #fcfff4;
+.title{
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+  top:30rpx;
 }
 
-.label-1__icon-checked {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 12px;
-    height: 12px;
-    background: #1aad19;
+.storyList{
+  width: 100%;
+  height:120rpx;
+  position: relative;
+  top:30rpx;  
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+  border-bottom-width: 2rpx;
+}
+
+.image{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  border-radius: 50%;
 }
 
 
-.label-2__icon {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-    width: 18px;
-    height: 18px;
-    background: #fcfff4;
-    border-radius: 50px;
+.imageView{
+  width: 120rpx;
+  height:120rpx;
+  position: absolute;
+  right: 40rpx;
 }
 
-.label-2__icon-checked {
-    position: absolute;
-    left: 3px;
-    top: 3px;
-    width: 12px;
-    height: 12px;
-    background: #1aad19;
-    border-radius: 50%;
-}
-
-.label-4_text{
-    text-align: center;
-    margin-top: 15px;
+.name{
+  width: 300rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 40rpx;
+  top:40rpx;
 }

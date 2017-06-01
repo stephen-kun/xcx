@@ -1,17 +1,9 @@
 <!--bbc.wxml-->
-<view>
-<button>电台列表</button>
-<view class="section section_gap">
-<checkbox-group class="group" catchchange="checkboxChange">
-  <view class="label-1" wx:for="{{checkboxItems}}">
-    <label>
-      <checkbox hidden value="{{item.name}}" checked="{{item.checked}}"></checkbox>
-      <view class="label-1__icon">
-        <view class="label-1__icon-checked" style="opacity:{{item.checked ? 1: 0}}"></view>
-      </view>
-      <text class="label-1__text">{{item.name}}</text>
-    </label>
-  </view>
-</checkbox-group>
-</view>
+
+<import src="../templates/story.wxml"/>
+
+<view class="story">
+
+<button class='title'>电台列表</button>
+  <template is="story" data="{{...FMs}}"></template>
 </view>

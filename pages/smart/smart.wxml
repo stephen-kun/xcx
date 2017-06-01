@@ -7,7 +7,7 @@
     <image class="addImage" src="../imags/add.jpg" mode="aspectFit"></image>
     </view>
 
-    <view class="dev" wx:for="{{devices}}">
+    <view class="dev" wx:for="{{devices}}" wx:key="id">
       <view class="devList" bindlongtap="doEdit" id="{{item.id}}">
         <text class="affair">{{item.dtype}}</text>
         <text class="time">{{item.dname}}</text>

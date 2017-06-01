@@ -1,2 +1,11 @@
 <!--edit.wxml-->
-<text>edit.wxml</text>
+
+<import src="../../templates/clock.wxml"/>
+
+<view class="clock">
+<form bindsubmit="setClock" class="clock">
+  <template is="clock" data="{{...clock}}"></template>
+  <button form-type="submit" class="addButton">修改</button>
+</form>
+  <button class="delButton" bindtap="delClock">删除</button>
+</view>
