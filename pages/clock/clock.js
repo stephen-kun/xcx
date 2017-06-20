@@ -30,7 +30,10 @@ Page({
   data: {
     appid:null,
     clocks:[],
-    isLogin:false
+    isLogin:false,
+    isEdit:0,
+    isDel:0,
+    listDel:[],
   },
 
   doAddClock:function(e){
@@ -46,6 +49,66 @@ Page({
     urls = urls.replace(/ID/, id)
     wx.navigateTo({
       url: urls,
+    })
+  },
+
+  doDel:function(e){
+    var that = this
+
+    wx.request({
+      url: 'https://wx.tonki.com.cn/clock',
+      method: 'POST',
+      data: {
+        appid: that.data.appid,
+        action: 'del',
+        id: that.data.listDel
+      },
+      success: function (res) {
+        if (res.data.err_no == 200) {
+          wx.reLaunch({
+            url: 'clock',
+          })
+        }
+      }
+    })
+  },
+
+  onEdit:function(e){
+    console.log('onEdit')
+    var that = this
+    that.setData({
+      isEdit:1
+    })
+  },
+
+  onCancel:function(e){
+    var that = this
+    that.setData({
+      isEdit:0,
+      isDel:0,
+      listDel:[]
+    })
+  },
+
+  doChange:function(e){
+    console.log(e.detail.value)
+    var that = this
+    var value = e.detail.value
+    if (value.length)
+    {
+      that.setData({
+        isDel:1
+      })
+    }
+    else
+    {
+      that.setData({
+        isDel:0
+      })
+    }
+
+    that.setData({
+      listDel:value
     })
   },
 

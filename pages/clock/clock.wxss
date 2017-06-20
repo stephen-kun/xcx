@@ -15,6 +15,13 @@
   border-bottom-width: 2rpx;
 }
 
+.clockItem{
+  left: 20%;
+  width: 80%;
+  height:120rpx;
+  position: relative;
+}
+
 .edit{
   width: 100%;
   height:120rpx;
@@ -23,7 +30,16 @@
   border-bottom-style: solid;
   border-bottom-color: lightgray;
   border-bottom-width: 2rpx;
-  background-color: gainsboro;
+  /*background-color: gainsboro;*/
+}
+
+.del{
+  width:180rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 30rpx;  
+  top:20rpx;  
+  background-color: red;  
 }
 
 .add{
@@ -56,6 +72,14 @@
   top:20rpx;
 }
 
+.radioGroup{
+  width:80rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 30rpx;
+  top:40rpx;
+}
+
 .affair{
   width: 100rpx;
   height: 80rpx;
@@ -69,6 +93,14 @@
   height: 80rpx;
   position: absolute;
   left: 280rpx;
+  top: 40rpx;
+}
+
+.navig{
+  width: 100rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 20rpx;
   top: 40rpx;
 }
 

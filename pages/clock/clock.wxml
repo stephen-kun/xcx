@@ -1,14 +1,15 @@
 <!--clock.wxml-->
 
 <view class="clock">
-  <view class="edit">
+  <view class="edit" wx:if="{{isEdit == 0}}">
+    <button class="editButton"  bindtap="onEdit">编辑</button>
     <text class="myClock">我的闹钟</text>
     <view class="add" bindtap="doAddClock">
     <image class="addImage" src="../imags/add.jpg" mode="aspectFit"></image>
     </view>
 
     <view class="clock" wx:for="{{clocks}}" wx:key="id">
-    <view class="clockList" bindlongtap="doEdit" id="{{item.id}}">
+    <view class="clockList">
       <text class="affair">{{item.affair}}</text>
       <text class="time">{{item.hour}}:{{item.minute}}</text>
       <view class="clock" wx:if="{{item.state == 1}}">
@@ -19,6 +20,29 @@
       </view>
     </view>
     </view>
+  </view>
+  <view class="edit" wx:else>
+    <button class="editButton"  bindtap="onCancel">取消</button>
+    <text class="myClock">我的闹钟</text>
+    <block wx:if="{{isDel == 0}}">
+      <button class="del" disabled>删除</button>
+    </block>
+    <block wx:else>
+      <button class="del" bindtap="doDel" >删除</button>    
+    </block>
+
+    <checkbox-group catchchange="doChange">
+    <view class="clock" wx:for="{{clocks}}" wx:key="id">
+      <view class="clockList">
+        <checkbox  class="radioGroup"  value="{{item.id}}"/>
+        <view class="clockItem" bindtap="doEdit" id="{{item.id}}">
+            <text class="affair">{{item.affair}}</text>
+            <text class="time">{{item.hour}}:{{item.minute}}</text>
+            <text class="navig">></text>
+        </view>
+      </view>
+    </view>
+    </checkbox-group>
   </view>
 </view>
 

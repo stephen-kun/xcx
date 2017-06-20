@@ -16,7 +16,7 @@
     <text class="repeatText">重复</text>
     <radio-group class="radioGroup" catchchange="radioChange">
     <label wx:for="{{items}}" wx:key="value">
-      <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+      <radio value="{{item.value}}" disabled="true" checked="{{item.checked}}"/>{{item.name}}
     </label>
     </radio-group>
   </view>

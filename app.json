@@ -10,7 +10,9 @@
     "pages/clock/create/create",
     "pages/clock/edit/edit",
     "pages/smart/create/create",
-    "pages/smart/edit/edit"
+    "pages/smart/edit/edit",
+    "pages/clock/affair/affair",
+    "pages/clock/repeat/repeat"
   ],
   "window": {
     "backgroundTextStyle": "light",
