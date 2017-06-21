@@ -1,23 +1,25 @@
 {
   "pages": [
-    "pages/smart/smart",
-    "pages/weather/weather",
-    "pages/clock/clock",
-    "pages/me/me",
-    "pages/story/story",
-    "pages/bbc/bbc",
+    "pages/bingo/bingo",
+    "pages/audio/audio",    
+    "pages/subscribe/subscribe",
+    "pages/subscribe/bbcs/bbcs",
+    "pages/subscribe/recent/recent",
+    "pages/subscribe/stories/stories",    
+    "pages/me/me",    
     "pages/me/login/login",
-    "pages/clock/create/create",
-    "pages/clock/edit/edit",
     "pages/smart/create/create",
     "pages/smart/edit/edit",
+    "pages/clock/clock",   
+    "pages/clock/create/create",
+    "pages/clock/edit/edit",    
     "pages/clock/affair/affair",
     "pages/clock/repeat/repeat"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "Bingo",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
@@ -26,20 +28,20 @@
     "backgroundColor": "f2f2f2",
     "list": [
       {
-        "pagePath": "pages/smart/smart",
-        "text": "智控"
+        "pagePath": "pages/bingo/bingo",
+        "text": "bingo"
       },
       {
-        "pagePath": "pages/weather/weather",
-        "text": "天气"
+        "pagePath": "pages/audio/audio",
+        "text": "播放"
       },
       {
-        "pagePath": "pages/clock/clock",
-        "text": "闹钟"
+        "pagePath": "pages/subscribe/subscribe",
+        "text": "订阅"
       },
       {
         "pagePath": "pages/me/me",
-        "text": "我"
+        "text": "账户"
       }
     ]
   },

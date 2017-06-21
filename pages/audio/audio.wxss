@@ -1,4 +1,4 @@
-/* story.wxss */
+/* audio.wxss */
 
 .story{
   display: flex;

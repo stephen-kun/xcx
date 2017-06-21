@@ -1,0 +1,48 @@
+/* subscribe.wxss */
+
+
+.subscribe{
+  display: flex;
+  flex-direction: column;
+}
+
+.itemList{
+  width: 100%;
+  height:120rpx;
+  position: relative;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+  border-bottom-width: 2rpx;
+
+}
+
+
+.navig{
+  width: 60rpx;
+  height: 80rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 40rpx; 
+}
+
+.text{
+  width: 200rpx;
+  height: 80rpx;
+  position: absolute;
+  left: 10%;
+  top: 40rpx;
+}
+
+.add{
+  width: 120rpx;
+  height:120rpx;
+  position: absolute;
+  right: 20rpx;
+}
+
+.addImage{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+}

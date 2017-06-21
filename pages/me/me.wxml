@@ -2,17 +2,28 @@
 
 
 
-  <view  class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  <view  class="user">
+    <view class="userinfo">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>  
+    </view>
+
+    <view class="itermList" bindtap="goMessage">
+      <text class="text">我的消息</text>
+      <text class="navig">></text>
+    </view>
+    <view class="itermList" bindtap="goConnWe">
+      <text class="text">联系我们</text>
+      <text class="navig">></text>
+    </view>
+    <view class="itermList" bindtap="goView">
+      <text class="text">意见反馈</text>
+      <text class="navig">></text>
+    </view>
 
 
-    <button class="story" bindtap="goStory">故事</button>
-    <button class="bbc" bindtap="goBbc">电台</button>
-
-
-    <button class="login" bindtap="logout" wx:if="{{isLogin}}">注销</button>
-    <button class="login" bindtap="login" wx:else>注册</button>
+    <button class="logout" bindtap="doLogout" wx:if="{{isLogin}}">解绑设备</button>
+    <button class="login" bindtap="doLogin" wx:else>绑定设备</button>
   </view>
 
 

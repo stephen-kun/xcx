@@ -1,0 +1,21 @@
+<!--recent.wxml-->
+
+
+<view class="subscribe">
+
+  <view class="itemList" bindtap="goRecList">
+    <text class="text">歌曲</text>
+    <text class="navig">></text>
+  </view>
+  <view class="itemList" bindtap="goStory">
+    <text class="text">儿童故事</text>
+    <text class="navig">></text>
+  </view>
+  <view class="itemList" bindtap="goBbc">
+    <text class="text">广播电台</text>
+    <text class="navig">></text> 
+  </view>
+
+</view>
+
+

@@ -1,9 +1,8 @@
-<!--story.wxml-->
-
+<!--audio.wxml-->
 <import src="../templates/story.wxml"/>
 
 <view class="story">
 
-<button class='title'>故事列表</button>
+<button class='title'>播放列表</button>
   <template is="story" data="{{...stories}}"></template>
 </view>

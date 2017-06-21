@@ -1,0 +1,25 @@
+<!--subscribe.wxml-->
+
+
+<view class="subscribe">
+
+  <view class="itemList" bindtap="goRecList">
+    <text class="text">最近播放</text>
+    <text class="navig">></text>
+  </view>
+  <view class="itemList" bindtap="goStory">
+    <text class="text">故事订阅</text>
+    <text class="navig">></text>
+  </view>
+  <view class="itemList" bindtap="goBbc">
+    <text class="text">广播收藏</text>
+    <text class="navig">></text> 
+  </view>
+  <view class="itemList">
+    <text class="text">我的歌单</text>
+    <view class="add" bindtap="doFolder">
+      <image class="addImage" src="../imags/add.jpg" mode="aspectFit"></image>
+    </view>
+  </view>
+
+</view>

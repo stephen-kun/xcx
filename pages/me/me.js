@@ -14,13 +14,13 @@ Page({
   },
 
 
-  login:function(){
+  doLogin:function(){
     wx.navigateTo({
       url: 'login/login',
     })
   },
 
-  logout:function(){
+  doLogout:function(){
     var that = this
     wx.showModal({
       title: '提示',
@@ -59,38 +59,10 @@ Page({
     })
   },
 
-  goStory:function(){
-    var that = this
-    if (that.data.isLogin)
-    {
-      wx.navigateTo({
-        url: '../story/story',
-      })
-    }
-    else
-    {
-      wx.showToast({
-        title: '您未注册',
-      })
-    }
+  goMessage:function(e){
+
   },
 
-  goBbc:function(){
-    var that = this
-    if (that.data.isLogin)
-    {
-      var url = '../bbc/bbc?id=OPENID'
-      url = url.replace(/OPENID/, that.data.userInfo.appid)
-      wx.navigateTo({
-        url: url,
-      })
-    }
-    else{
-      wx.showToast({
-        title: '您未注册',
-      })      
-    }
-  },
 
   /**
    * 生命周期函数--监听页面加载

@@ -1,4 +1,4 @@
-// story.js
+//  .js
 
 var app = getApp()
 var playImage = '../imags/play.jpg'
@@ -15,25 +15,25 @@ Page({
     appid: null,
     stories: {
       play: playImage,
-      pause:pauseImage,
-      items:[]
+      pause: pauseImage,
+      items: []
     },
   },
 
-  doAction:function(e){
+  doAction: function (e) {
     console.log(e.currentTarget.id)
     var that = this
     var id = e.currentTarget.id
 
     wx.request({
       url: 'https://wx.tonki.com.cn/story',
-      data:{
-        appid:that.data.appid,
-        action:'play',
-        id:id
+      data: {
+        appid: that.data.appid,
+        action: 'play',
+        id: id
       },
-      success:function(res){
-        if(res.data.err_no == 200){
+      success: function (res) {
+        if (res.data.err_no == 200) {
           var stories = that.data.stories
           for (var i = 0; i < stories.items.length; i++) {
             if (stories.items[i].id == id) {
@@ -60,25 +60,24 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    app.getAppId(function(appid){
+    app.getAppId(function (appid) {
       that.setData({
-        appid:appid
+        appid: appid
       })
     })
 
     wx.request({
       url: 'https://wx.tonki.com.cn/story',
-      data:{
-        appid:that.data.appid,
-        action:'list'
+      data: {
+        appid: that.data.appid,
+        action: 'list'
       },
-      success:function(res){
-        if(res.data.err_no == 200)
-        {
+      success: function (res) {
+        if (res.data.err_no == 200) {
           var stories = that.data.stories
           stories.items = res.data.stories
           that.setData({
-            stories:stories
+            stories: stories
           })
         }
       }
@@ -89,62 +88,62 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   }
 })

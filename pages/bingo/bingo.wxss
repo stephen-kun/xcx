@@ -1,0 +1,6 @@
+/* bingo.wxss */
+
+.bingo {
+  display: flex;
+  flex-direction: column;
+}
