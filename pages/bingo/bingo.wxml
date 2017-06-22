@@ -2,5 +2,16 @@
 
 <view class="bingo">
 
+  <view class="logo">
+    <image src="../imags/echo.jpg" class="logoImage"></image>
+  </view>
+
+  <view class="panel">
+    <button>闹钟</button>
+    <button>家电控制</button>
+    <button>发现</button>
+    <button>设置</button>
+  </view>
+
 
 </view>
