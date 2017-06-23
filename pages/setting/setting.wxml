@@ -1,0 +1,42 @@
+<!--setting.wxml-->
+
+<view class="setting">
+
+  <view class="itemList" bindtap="goNetwork">
+    <text class="text">网络连接</text>
+    <text class="navig">></text>
+  </view>
+  <view class="itemList">
+    <text class="text">唤醒词</text>
+    <text class="info">{{invoke}}</text>
+  </view>
+  <view class="itemList">
+    <text class="text">序列号</text>
+    <text class="info">{{imei}}</text>
+  </view>
+  <view class="itemList">
+    <text class="text">bingo版本</text>
+    <text class="info">{{version}}</text>
+  </view>
+  <view class="itemList" bindtap="goProblems">
+    <text class="text">常见问题</text>
+    <text class="navig">></text>
+  </view>   
+
+  <view class="itemList">
+    <text class="text">音量设置</text>
+  </view>  
+
+  <view class="sound">
+    <button class="down" bindtap="soundDown">
+      <image class="soundImage" src="../imags/sounddown.jpg"></image>
+    </button>
+    <view class="soundSlider">
+      <slider bindchange="soundChange" step="1" max="{{maxSound}}" value="{{sound}}"/>
+    </view>
+    <button class="up" bindtap="soundUp">
+      <image class="soundImage" src="../imags/sounddown.jpg"></image>
+    </button>
+  </view>       
+
+</view>

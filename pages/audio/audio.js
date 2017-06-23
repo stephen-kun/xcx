@@ -5,7 +5,6 @@ var playImage = '../imags/play.jpg'
 var pauseImage = '../imags/pause.jpg'
 
 
-
 Page({
 
   /**
@@ -18,6 +17,34 @@ Page({
       pause: pauseImage,
       items: []
     },
+    sound:0,
+    maxSound:50,
+  },
+
+  soundUp:function(e){
+    var that = this
+    var sound = this.data.sound
+    sound += 1
+    that.setData({
+      sound:sound
+    })
+  },
+
+  soundDown:function(e){
+    var that = this
+    var sound = this.data.sound
+    sound -= 1
+    that.setData({
+      sound: sound
+    })   
+  },
+
+  soundChange:function(e){
+    console.log('slider 发生 change 事件，携带值为', e.detail.value)
+    var that = this
+    that.setData({
+      sound:e.detail.value
+    })
   },
 
   doAction: function (e) {

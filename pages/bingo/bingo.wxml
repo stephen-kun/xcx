@@ -7,10 +7,10 @@
   </view>
 
   <view class="panel">
-    <button>闹钟</button>
-    <button>家电控制</button>
-    <button>发现</button>
-    <button>设置</button>
+    <button class="leftButton" bindtap="goClock">闹钟</button>
+    <button class="rightButton" bindtap="goSmart">家电控制</button>
+    <button class="leftButton" bindtap="goDiscover">发现</button>
+    <button class="rightButton" bindtap="goSetting">设置</button>
   </view>
 
 

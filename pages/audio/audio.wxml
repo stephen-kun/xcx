@@ -3,6 +3,19 @@
 
 <view class="story">
 
-<button class='title'>播放列表</button>
+  <button class='title'>播放列表</button>
   <template is="story" data="{{...stories}}"></template>
+
+  <view class="sound">
+    <button class="down" bindtap="soundDown">
+      <image class="soundImage" src="../imags/sounddown.jpg"></image>
+    </button>
+    <view class="soundSlider">
+      <slider bindchange="soundChange" step="1" max="{{maxSound}}" value="{{sound}}"/>
+    </view>
+    <button class="up" bindtap="soundUp">
+      <image class="soundImage" src="../imags/sounddown.jpg"></image>
+    </button>
+  </view>
+
 </view>

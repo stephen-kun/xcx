@@ -25,3 +25,29 @@
   border-top-color: lightgray;
   border-top-width: 2rpx;
 }
+
+.leftButton{
+  width: 50%;
+  height: 200rpx;
+  font-size:18px;
+  position: absolute;
+  left: 0rpx;
+  text-align:center;
+  line-height: 200rpx;
+  padding:0px;
+  vertical-align:middle ;
+  margin:0px;   
+}
+
+.rightButton{
+  width: 50%;
+  height: 200rpx;
+  position: relative;
+  left: 50%;
+  font-size:18px;
+  text-align:center;
+  line-height: 200rpx;  
+  padding:0px;
+  vertical-align:middle ;
+  margin:0px;   
+}

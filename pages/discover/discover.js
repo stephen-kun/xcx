@@ -1,4 +1,4 @@
-// bingo.js
+// discover.js
 Page({
 
   /**
@@ -7,32 +7,6 @@ Page({
   data: {
   
   },
-
-
-  goClock:function(e){
-    wx.navigateTo({
-      url: '../clock/clock',
-    })
-  },
-
-  goSmart:function(e){
-    wx.showToast({
-      title: '待开发',
-    })
-  },
-
-  goDiscover:function(e){
-    wx.navigateTo({
-      url: '../discover/discover',
-    })
-  },
-
-  goSetting:function(e){
-    wx.navigateTo({
-      url: '../setting/setting',
-    })
-  },
-
 
   /**
    * 生命周期函数--监听页面加载
