@@ -1,2 +1,12 @@
 <!--affair.wxml-->
-<text>affair.wxml</text>
+
+<view class="affair">
+
+<view class="affairInput">
+  <input  value="{{affair}}"  focus='true' confirm-type="保存" bindinput="onInput" />
+</view>
+
+<button class="saveButton" bindtap="doSave">保存</button>
+<button class="cancelButton" bindtap="doCancel">取消</button>
+
+</view>

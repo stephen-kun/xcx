@@ -5,14 +5,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    affair:null
+  },
+
+  onInput:function(e){
+    console.log(e.detail.value)
+    var that = this
+    that.setData({
+      affair:e.detail.value
+    })
+  },
+
+  doSave:function(e){
+    var that = this 
+    wx.setStorageSync("affair", that.data.affair)
+
+    wx.navigateBack({
+      delta:1
+    })
+  },
+
+  doCancel:function(e){
+    wx.navigateBack({
+      delta: 1      
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options.affair)
+    var that = this
+    that.setData({
+      affair:options.affair
+    })
   },
 
   /**

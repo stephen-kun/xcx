@@ -1,18 +1,35 @@
 // repeat.js
+var util = require('../../../utils/util.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    repeats:[]  
+  },
+
+  doChange:function(e){
+    console.log(e.detail.value)
+    var that = this
+    var value = e.detail.value
+    var repeat = util.clockRepeatStr(value)
+    console.log(repeat)
+    wx.setStorageSync("repeat", repeat)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this
+    console.log(options.repeat)   
+    var repeats = util.repeatCheckValue(options.repeat)
+    console.log(repeats)
+    that.setData({
+      repeats:repeats
+    })
   },
 
   /**

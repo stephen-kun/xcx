@@ -1,27 +1,14 @@
 // clock.js
 
-var app = getApp()
+Array.prototype.contains = function (mem) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == mem)
+      return true
+  }
+  return false
+}
 
-/*
-var clocks = [
-  {
-    id:12,
-    hour:6,
-    minute:30,
-    repeate:[1, 2, 3],
-    affair:"跑步",
-    state:1
-  },
-  {
-    id: 16,
-    hour: 6,
-    minute: 30,
-    repeate: [1, 2, 3],
-    affair: "起床",
-    state: 0
-  }  
-]
-*/
+var app = getApp()
 
 Page({
   /**
@@ -54,6 +41,14 @@ Page({
 
   doDel:function(e){
     var that = this
+    var clocks = that.data.clocks
+    var temp = []
+    for(var i=0; i<clocks.length; i++){
+      if (that.data.listDel.contains(clocks[i].id)){
+        continue
+      }
+      temp.push(clocks[i])
+    }
 
     wx.request({
       url: 'https://wx.tonki.com.cn/clock',
@@ -65,8 +60,9 @@ Page({
       },
       success: function (res) {
         if (res.data.err_no == 200) {
-          wx.reLaunch({
-            url: 'clock',
+          that.setData({
+            clocks:temp,
+            isDel:0
           })
         }
       }
@@ -181,12 +177,10 @@ Page({
           },
           method:"POST",
           success: function (res) {
-            console.log(res.data.err_no)
-            console.log(res.data.err_msg)
-            console.log(res.data.clocks)            
+            var clocks = res.data.clocks
             if (res.data.err_no == 200) {
               that.setData({
-                clocks:res.data.clocks
+                clocks: clocks
               })
             }
           }
@@ -213,6 +207,9 @@ Page({
     that.setData({
       isLogin: isLogin
     })  
+
+    wx.removeStorageSync("repeat")
+    wx.removeStorageSync("affair")
   },
 
   /**

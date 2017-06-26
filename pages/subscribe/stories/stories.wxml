@@ -1,2 +1,9 @@
 <!--stories.wxml-->
-<text>stories.wxml</text>
+
+<view class="story">
+  <button class='title'>已订阅故事</button>
+  <view class="itemList" wx:for="{{stories}}" wx:key="name">
+    <text class="name">{{item.name}}</text>
+    <text class="num">共{{item.num}}篇</text>
+  </view>
+</view>

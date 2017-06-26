@@ -21,38 +21,45 @@ Page({
     id:null,
     appid: null,
     isLogin: false,
-    repeat: null,
     hour: null,
     minute: null,
     clock: {
       hours: hours,
       minutes: minutes,
       value: [6, 30],
-      items: [
-        { name: '每天', value: 'everyday' },
-        { name: '周末', value: 'weekend' },
-        { name: '临时', value: 'temporary'},
-        { name: '工作日', value: 'workingday' }
-      ],
-      affair: "闹钟",
+      repeat: "从不",
+      affair: "闹钟"
     },
   },
 
-  radioChange: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      repeat: e.detail.value
+  setRepeat: function (e) {
+    var that = this
+    var url = '../repeat/repeat?repeat=REPEAT'
+    url = url.replace(/REPEAT/, that.data.clock.repeat)
+    wx.navigateTo({
+      url: url,
     })
   },
 
+  setAffair: function (e) {
+    var that = this
+    var url = '../affair/affair?affair=AFFAIR'
+    url = url.replace(/AFFAIR/, that.data.clock.affair)
+    wx.navigateTo({
+      url: url,
+    })
+  },
+
+
   bindChange: function (e) {
+    var that = this
     var val = e.detail.value
     console.log(val)
-    this.setData({
-      hour: this.data.clock.hours[val[0]],
-      minute: this.data.clock.minutes[val[1]]
+    that.setData({
+      hour: that.data.clock.hours[val[0]],
+      minute: that.data.clock.minutes[val[1]]
     })
-    console.log(this.data.hour)
+    console.log(that.data.hour)
   },
 
   delClock:function(e){
@@ -77,15 +84,14 @@ Page({
   },
 
   setClock: function (e) {
-    console.log("affire: " + e.detail.value.affair)
     var that = this
 
     var clock = {};
     clock['id'] = that.data.id
     clock["hour"] = that.data.hour
     clock["minute"] = that.data.minute
-    clock['affair'] = e.detail.value.affair
-    clock['repeat'] = that.data.repeat
+    clock['affair'] = that.data.clock.affair
+    clock['repeat'] = that.data.clock.repeat
 
     wx.request({
       url: 'https://wx.tonki.com.cn/clock',
@@ -97,6 +103,8 @@ Page({
       },
       success: function (res) {
         if (res.data.err_no == 200) {
+          wx.removeStorageSync("affair")
+          wx.removeStorageSync("repeat")
           wx.reLaunch({
             url: '../clock',
           })
@@ -136,21 +144,12 @@ Page({
           clk.value[0] = clock.hour
           clk.value[1] = clock.minute
           clk.affair = clock.affair
-
-          for(var i=0; i<clk.items.length; i++)
-          {
-            if(clk.items[i].value == clock.repeat)
-            {
-              clk.items[i]['checked'] = 'true'
-            }
-          }
+          clk.repeat = clock.repeat
 
           that.setData({
             id:clock.id,
             hour:clock.hour,
             minute:clock.minute,
-            affair:clock.affair,
-            repeat:clock.repeat,
             clock:clk
           })
         }
@@ -169,7 +168,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+    var repeat = wx.getStorageSync("repeat")
+    var affair = wx.getStorageSync("affair")
+    console.log(repeat)
+    console.log(affair)
+    var clock = that.data.clock
+    clock.value[0] = that.data.hour
+    clock.value[1] = that.data.minute
+    
+    if(repeat){
+      clock.repeat = repeat
+      that.setData({
+        clock:clock
+      })
+    }
+
+    if(affair){
+      clock.affair = affair
+      that.setData({
+        clock:clock
+      })
+    }
   },
 
   /**

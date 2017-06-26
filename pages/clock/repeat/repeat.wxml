@@ -1,2 +1,37 @@
 <!--repeat.wxml-->
-<text>repeat.wxml</text>
+
+<view class="repeat">
+
+    <checkbox-group catchchange="doChange">
+    <view class="firstItem">
+      <text class="repeatText">每周日</text>
+      <checkbox  class="radioGroup"  checked="{{repeats[6]}}" value="7"/>
+    </view>    
+    <view class="itemList">
+      <text class="repeatText">每周一</text>
+      <checkbox  class="radioGroup"  checked="{{repeats[0]}}" value="1"/>
+    </view>   
+    <view class="itemList">
+      <text class="repeatText">每周二</text>
+      <checkbox  class="radioGroup"  checked="{{repeats[1]}}" value="2"/>
+    </view>     
+    <view class="itemList">
+      <text class="repeatText">每周三</text>
+      <checkbox  class="radioGroup"  checked="{{repeats[2]}}" value="3"/>
+    </view> 
+    <view class="itemList">
+      <text class="repeatText">每周四</text>
+      <checkbox  class="radioGroup"  checked="{{repeats[3]}}" value="4"/>
+    </view>  
+    <view class="itemList">
+      <text class="repeatText">每周五</text>
+      <checkbox  class="radioGroup"  checked="{{repeats[4]}}" value="5"/>
+    </view>
+    <view class="itemList">
+      <text class="repeatText">每周六</text>
+      <checkbox  class="radioGroup" checked="{{repeats[5]}}" value="6"/>
+    </view>            
+
+    </checkbox-group>
+
+</view>

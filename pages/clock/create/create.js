@@ -21,30 +21,35 @@ Page({
       hours: hours,
       minutes: minutes,
       value: [6, 30],
-      items:[
-        { name: '每天', value: 'everyday' },
-        { name: '周末', value: 'weekend' },
-        { name: '临时', value: 'temporary', checked: 'true' },
-        { name: '工作日', value: 'workingday' },
-      ],
-      affair:"闹钟",
+      repeat:"从不",
+      affair:"闹钟"
     },
     appid:null,
     isLogin:false,
-    repeat: null,    
     hour:null,
     minute:null
   },
 
-  radioChange:function(e){
-    console.log(e.detail.value)
-    this.setData({
-      repeat:e.detail.value
+  setRepeat:function(e){
+    var that = this
+    var url = '../repeat/repeat?repeat=REPEAT'
+    url = url.replace(/REPEAT/, that.data.clock.repeat)
+    wx.navigateTo({
+      url: url,
     })
   },
 
+  setAffair:function(e){
+    var that = this
+    var url = '../affair/affair?affair=AFFAIR'   
+    url = url.replace(/AFFAIR/, that.data.clock.affair)
+    wx.navigateTo({
+      url: url,
+    })    
+  },
+
   setClock: function (e) {
-    console.log("affire: " + e.detail.value.affair)
+    var that = this
 
     if(!this.data.isLogin){
       wx.showToast({
@@ -56,8 +61,8 @@ Page({
     var clock = {};
     clock["hour"] = this.data.hour
     clock["minute"] = this.data.minute
-    clock['affair'] = e.detail.value.affair
-    clock['repeat'] = this.data.repeat
+    clock['affair'] = that.data.clock.affair
+    clock['repeat'] = that.data.clock.repeat
 
     wx.request({
       url: 'https://wx.tonki.com.cn/clock',
@@ -69,6 +74,8 @@ Page({
       },
       success:function(res){
         if(res.data.err_no == 200){
+          wx.removeStorageSync("affair")
+          wx.removeStorageSync("repeat")
           wx.reLaunch({
             url: '../clock',
           })
@@ -106,7 +113,6 @@ Page({
     that.setData({
       hour:6,
       minute:30,
-      repeat: 'temporary'
     })
   },
 
@@ -121,7 +127,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+    var repeat = wx.getStorageSync("repeat")
+    var affair = wx.getStorageSync("affair")
+    console.log(repeat)
+    console.log(affair)
+    var clock = that.data.clock
+    clock.value[0] = that.data.hour
+    clock.value[1] = that.data.minute
 
+    if (repeat) {
+      clock.repeat = repeat
+      that.setData({
+        clock: clock
+      })
+    }
+
+    if (affair) {
+      clock.affair = affair
+      that.setData({
+        clock: clock
+      })
+    }
   },
 
   /**

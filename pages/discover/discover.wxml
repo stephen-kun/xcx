@@ -1,2 +1,25 @@
 <!--discover.wxml-->
-<text>discover.wxml</text>
+
+<view class="discover">
+
+<view class="title">
+  <button class="story" bindtap="switchStory">儿童故事</button>
+  <button class="broadcast" bindtap="switchBbc">广播</button>
+  <button class="music" bindtap="switchMusic">音乐</button>
+</view>
+
+
+<view class="storyView">
+
+</view>
+
+<view class="bbcView">
+
+</view>
+
+<view class="musicView">
+
+</view>
+
+
+</view>

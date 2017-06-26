@@ -5,7 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    state:1,
+  },
+
+  switchStory:function(e){
+    var that = this
+    that.setData({
+      state:1
+    })
+  },
+
+  switchBbc:function(e){
+    var that = this
+    that.setData({
+      state: 2
+    })   
+  },
+
+  switchMusic: function (e) {
+    var that = this
+    that.setData({
+      state: 3
+    })
   },
 
   /**

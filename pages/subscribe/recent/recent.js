@@ -8,6 +8,24 @@ Page({
   
   },
 
+  goRecList:function(e){
+    wx.switchTab({
+      url: '../../audio/audio',
+    })
+  },
+
+  goStory:function(e){
+    wx.switchTab({
+      url: '../../audio/audio',
+    })
+  },
+
+  goBbc:function(e){
+    wx.switchTab({
+      url: '../../audio/audio',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

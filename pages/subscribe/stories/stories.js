@@ -1,11 +1,27 @@
 // stories.js
+
+var stories = [
+  {
+    "name":'十万个为什么',
+    'num':'30'
+  },
+  {
+    "name": '格林童话',
+    'num': '30'
+  },
+  {
+    "name": '三字经',
+    'num': '30'
+  },
+]
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    stories:stories
   },
 
   /**

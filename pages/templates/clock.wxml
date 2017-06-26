@@ -12,17 +12,13 @@
     </picker-view-column>
     </picker-view>
   </view>
-  <view class="repeat">
+  <view class="repeat" bindtap="setRepeat">
     <text class="repeatText">重复</text>
-    <radio-group class="radioGroup" catchchange="radioChange">
-    <label wx:for="{{items}}" wx:key="value">
-      <radio value="{{item.value}}" disabled="true" checked="{{item.checked}}"/>{{item.name}}
-    </label>
-    </radio-group>
+    <text class="repeatValue">{{repeat}} ></text>
   </view>
-  <view class="affair">
+  <view class="affair" bindtap="setAffair">
      <text class="affairText">标签</text> 
-     <input name="affair" class="affairInput" placeholder="闹钟" focus value="{{affair}}"/>
+     <text class="affairValue">{{affair}} ></text>
   </view>
 </view>
 </template>

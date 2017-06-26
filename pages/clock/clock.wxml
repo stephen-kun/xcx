@@ -10,8 +10,9 @@
 
     <view class="clock" wx:for="{{clocks}}" wx:key="id">
     <view class="clockList">
-      <text class="affair">{{item.affair}}</text>
       <text class="time">{{item.hour}}:{{item.minute}}</text>
+      <text class="affair">{{item.affair}}</text>   
+      <text class="repeat">{{item.repeat}}</text>  
       <view class="clock" wx:if="{{item.state == 1}}">
        <switch class="state" id="{{item.id}}" type="switch" bindchange="clockSwitch" checked/>     
       </view>
@@ -36,8 +37,8 @@
       <view class="clockList">
         <checkbox  class="radioGroup"  value="{{item.id}}"/>
         <view class="clockItem" bindtap="doEdit" id="{{item.id}}">
-            <text class="affair">{{item.affair}}</text>
             <text class="time">{{item.hour}}:{{item.minute}}</text>
+            <text class="affair">{{item.affair}}</text>           
             <text class="navig">></text>
         </view>
       </view>
