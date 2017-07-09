@@ -1,20 +1,14 @@
 <!--smart.wxml-->
 
-<view class="dev">
-  <view class="edit">
-    <text class="myDev">我的设备</text>
-    <view class="add" bindtap="doAddDev">
-    <image class="addImage" src="../imags/add.jpg" mode="aspectFit"></image>
-    </view>
+<view class="smartImage">
+  <image src="../imags/smart.jpg" class="backImage"></image>
+</view>
 
-    <view class="dev" wx:for="{{devices}}" wx:key="id">
-      <view class="devList" bindlongtap="doEdit" id="{{item.id}}">
-        <text class="affair">{{item.dtype}}</text>
-        <text class="time">{{item.dname}}</text>
-        <text class="position">{{item.position}}</text>
-      </view>
-    </view>
-  </view>
+<view class="dev">
+  <button class="aircondition" bindtap="goAircondition">空调遥控器</button>
+  <button class="fan" bindtap="goFan">风扇遥控器</button>  
+  <button class="acoustics" bindtap="goAcoustics">音响遥控器</button>
+  <button class="tv" bindtap="goTV">电视遥控器</button>  
 </view>
 
 

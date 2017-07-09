@@ -160,33 +160,6 @@ Page({
       that.setData({
         appid:appid
       })
-
-      var isLogin = app.isLogin()
-      that.setData({
-        isLogin:isLogin
-      })
-
-      if(isLogin)
-      {
-        // get clock list
-        wx.request({
-          url: 'https://wx.tonki.com.cn/clock',
-          data: {
-            appid: appid,
-            action: "list"
-          },
-          method:"POST",
-          success: function (res) {
-            var clocks = res.data.clocks
-            if (res.data.err_no == 200) {
-              that.setData({
-                clocks: clocks
-              })
-            }
-          }
-        })
-      }
-
     })
 
   },
@@ -207,6 +180,26 @@ Page({
     that.setData({
       isLogin: isLogin
     })  
+
+    if (isLogin) {
+      // get clock list
+      wx.request({
+        url: 'https://wx.tonki.com.cn/clock',
+        data: {
+          appid: that.data.appid,
+          action: "list"
+        },
+        method: "POST",
+        success: function (res) {
+          var clocks = res.data.clocks
+          if (res.data.err_no == 200) {
+            that.setData({
+              clocks: clocks
+            })
+          }
+        }
+      })
+    }    
 
     wx.removeStorageSync("repeat")
     wx.removeStorageSync("affair")

@@ -16,8 +16,8 @@ Page({
   },
 
   goSmart:function(e){
-    wx.showToast({
-      title: '待开发',
+    wx.navigateTo({
+      url: '../smart/smart',
     })
   },
 

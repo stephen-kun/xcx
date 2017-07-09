@@ -12,8 +12,8 @@
 }
 
 .logoImage{
-  position: relative;
-  left: 60rpx;
+  width:375px;
+  height:350px;
 }
 
 .panel{

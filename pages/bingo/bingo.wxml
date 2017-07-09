@@ -1,10 +1,10 @@
 <!--bingo.wxml-->
 
-<view class="bingo">
+<view class="logo">
+  <image src="../imags/echo.jpg" class="logoImage"></image>
+</view>
 
-  <view class="logo">
-    <image src="../imags/echo.jpg" class="logoImage"></image>
-  </view>
+<view class="bingo">
 
   <view class="panel">
     <button class="leftButton" bindtap="goClock">闹钟</button>
@@ -12,6 +12,5 @@
     <button class="leftButton" bindtap="goDiscover">发现</button>
     <button class="rightButton" bindtap="goSetting">设置</button>
   </view>
-
 
 </view>

@@ -1,20 +1,6 @@
 // smart.js
-var app = getApp()
 
-var devices = [
-  {
-    id:1,
-    dtype:'空调',
-    dname:'海尔',
-    position:'卧室'
-  },
-  {
-    id:2,
-    dtype: '窗帘',
-    dname: '格力',
-    position: '卧室'
-  },  
-]
+var app = getApp()
 
 Page({
 
@@ -22,24 +8,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-    appid:null,
     isLogin:false,
-    devices: devices,
   },
 
-  doAddDev: function (e) {
-    wx.navigateTo({
-      url: './create/create',
-    })
+
+  goAircondition:function(e){
+    var that = this
+    if(that.data.isLogin){
+      wx.navigateTo({
+        url: 'aircondition/aircondition',
+      })
+    }else{
+      wx.showToast({
+        title: '未绑定设备',
+      })
+    }
   },
 
-  doEdit: function (e) {
-    var id = e.target.id
-    var urls = './edit/edit?ID'
-    urls = urls.replace(/ID/, id)
-    wx.navigateTo({
-      url: urls,
-    })
+  goFan:function(e){
+
+  },
+
+  goAcoustics:function(e){
+
+  },
+
+  goTV:function(e){
+
   },
 
   /**
@@ -48,36 +43,6 @@ Page({
   onLoad: function (options) {
     var that = this
 
-    app.getAppId(function(appid){
-      that.setData({
-        appid:appid
-      })
-    })
-
-    var isLogin = app.isLogin()
-    that.setData({
-      isLogin:isLogin
-    })
-
-    if(isLogin)
-    {
-      wx.request({
-        url: 'https://wx.tonki.com.cn/dev',
-        method:'POST',
-        data:{
-          appid:that.data.appid,
-          action:'list'
-        },
-        success:function(res){
-          if(res.data.err_no == 200)
-          {
-            that.setData({
-              devices:res.data.devices
-            })
-          }
-        }
-      })
-    }
   },
 
   /**
@@ -91,7 +56,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    var that = this
+    var isLogin = app.isLogin()
+    that.setData({
+      isLogin:isLogin
+    })
   },
 
   /**

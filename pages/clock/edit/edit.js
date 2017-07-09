@@ -105,8 +105,8 @@ Page({
         if (res.data.err_no == 200) {
           wx.removeStorageSync("affair")
           wx.removeStorageSync("repeat")
-          wx.reLaunch({
-            url: '../clock',
+          wx.navigateBack({
+            delta: 1            
           })
         }
       }

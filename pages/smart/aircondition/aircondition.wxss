@@ -1,0 +1,17 @@
+/* aircondition.wxss */
+
+.aircondition {
+  display: flex;
+  flex-direction: column;
+}
+
+.display{
+  width:90%;
+  height: 300rpx;
+  position: relative;
+  left: 5%;
+  top:30rpx;
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 2rpx;  
+}

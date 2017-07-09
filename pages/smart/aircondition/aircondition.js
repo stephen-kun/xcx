@@ -1,42 +1,18 @@
-// create.js
-var app = getApp()
+// aircondition.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    appid: null
+  
   },
 
-  goAirPage: function (event) {
-    wx.navigateTo({
-      url: './air-condition/air-condition',
-    })
-  },
-
-  goLightPage: function (event) {
-    wx.navigateTo({
-      url: './light/light',
-    })
-  },
-
-  goCurtainPage: function (event) {
-    wx.navigateTo({
-      url: './curtain/curtain',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    app.getAppId(function (appid) {
-      console.log(appid)
-      that.setData({
-        appid: appid
-      })
-    })
+  
   },
 
   /**

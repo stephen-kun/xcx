@@ -1,0 +1,13 @@
+<!--aircondition.wxml-->
+
+<view class="aircondition">
+
+  <view class="display">
+    <image src="{{modeImage}}" class="mode"></image>
+    <text class="temp">{{temperature}}。</text>
+
+    
+  
+  </view>
+
+</view>
